@@ -1,5 +1,5 @@
 {
-	"name": "phpforge/module/main",
+	"name": "phpforge/module-main",
 	"description": "Main Module",
 	"autoload": {
 		"psr-0": {"Main": "src/"}
