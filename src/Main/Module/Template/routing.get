@@ -1,0 +1,105 @@
+<h2>Routing</h2>
+
+<br />
+
+<p>The modularity of phpforge is designed heavily around the concept of reflection, which gives the framework the ability to understand a module and it's methods without physically instantiating the class structure. </p>
+
+<p>Because of this we can iterate each module class hierarchy, mapping and executing methods without having to instantiate the object and it's constructor.</p>
+
+<p>All concepts of routing are based off this reflection.</p>
+
+<p>This may seem like overkill, however reflection is also a key concept for event and hook functions.</p>
+
+<p><b>Note: </b> It's a requirement that all modules contain an autoload_classmap.php, for composer based modules this can be built from <i style="color: darkgrey;">composer dump-autoload -o</i></p>
+
+<br />
+
+<a class="anchor" name="default">-</a>
+<h3>Default routing</h3>
+
+<p>By default routing is built from module class structures and their action methods.</p>
+
+<p><b>Note: </b> Action methods prepend the requested HTTP method (Get, Post, Update, Delete) that relate to them.</p>
+
+<br />
+
+<h4>Module example</h4>
+<pre>
+class Main extends Forge\Application\Module {
+  public function mainGet() {
+
+  }
+}
+</pre>
+
+<p>Will match the following routes</p>
+<pre>
+/main
+</pre>
+
+<p><b>Note: </b> The default module will assign / to the default action method (method named after the class using the HTTP method Get), so in the above class / would default to \Main::mainGet()</p>
+
+<br />
+
+<a class="anchor" name="custom">-</a>
+<h3>Custom routing</h3>
+
+<p>Custom routes are mapped from a routes() method within a module class to an already existing default route</p>
+
+<p><b>Note: </b> Custom routes can include regular expressions with named groups being mapped to a request parameter.</p>
+
+<br />
+
+<h4>Custom routing example</h4>
+<pre>
+class Main extends Forge\Application\Module {
+  public function routes() {
+    return array(
+      'get' => array(
+        '/uuid/(?<uuid>[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12})' => '/main/uuid',
+      ),
+    );
+  }
+
+  public function uuidGet() {
+    $uuid = $this->getRequest()->getParam('uuid');
+  }
+
+  public function mainGet() {
+
+  }
+}
+</pre>
+
+<p><b>Note: </b> You are not required to append your base URI.</p>
+
+<br />
+<a class="anchor" name="menu">-</a>
+<h3>Menu routing</h3>
+
+<p>Menu's also include an ability to append a custom route to a default route, which will modify the menu item to link to the custom URL instead of the default route.</p>
+
+<p><b>Note: </b> Menu routes can include regular expressions with named groups being mapped to a request parameter.</p>
+
+<br />
+
+<h4>Menu routing example pointing /help to /main/help</h4>
+<pre>
+class Main extends Forge\Application\Module {
+
+  public function menus() {
+    $menu = new Menu('Menu', array(
+      'menus' => new Menu('Help', array(),  $this->getBaseUri() . '/help', '/main/help'),
+    ));
+    return array('top' => array('help' => $menu));
+  }
+
+  public function helpGet() {
+
+  }
+
+  public function mainGet() {
+
+  }
+</pre>
+

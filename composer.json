@@ -1,0 +1,11 @@
+{
+	"name": "Module/Main",
+	"description": "Main Module",
+	"autoload": {
+		"psr-0": {"Main": "src/"}
+	},
+	"require": {
+
+	},
+	"disable": false
+}
