@@ -20,25 +20,65 @@ class Main extends Module {
 	public function menus() {
 		$menu = new Menu('Help', array(
 			'module' => new Menu('Module', array(
-				'about' => new Menu('About', array(), $this->getBaseUri() . '/module#default'),
-				'create' => new Menu('Create', array(), $this->getBaseUri() . '/module#create'),
-			), $this->getBaseUri() . '/module', '/main/module'),
+				'about' => new Menu(
+					'About',
+					array(),
+					$this->getBaseUri() . '/module#default'
+				),
+				'create' => new Menu(
+					'Create',
+					array(),
+					$this->getBaseUri() . '/module#create'
+				)), $this->getBaseUri() . '/module', '/main/module'
+			),
 			'routing' => new Menu('Routing', array(
-				'default' => new Menu('Default Routing', array(), $this->getBaseUri() . '/routing#default'),
-				'custom' => new Menu('Custom Routing', array(), $this->getBaseUri() . '/routing#custom'),
-				'menu' => new Menu('Menu Routing', array(), $this->getBaseUri() .'/routing#menu'),
-			), $this->getBaseUri() . '/routing', '/main/module/routing'),
+				'default' => new Menu(
+					'Default Routing',
+					array(),
+					$this->getBaseUri() . '/routing#default'
+				),
+				'custom' => new Menu(
+					'Custom Routing',
+					array(),
+					$this->getBaseUri() . '/routing#custom'
+				),
+				'menu' => new Menu(
+					'Menu Routing',
+					array(),
+					$this->getBaseUri() .'/routing#menu'
+				)), $this->getBaseUri() . '/routing', '/main/module/routing'
+			),
 			'events' => new Menu('Events', array(
-				'global' => new Menu('Global Events', array(), $this->getBaseUri() . '/event#global'),
-				'hook' => new Menu('Hook Functions', array(), $this->getBaseUri() . '/event#hook/')
-			), $this->getBaseUri() . '/event', '/main/module/event'),
+				'global' => new Menu(
+					'Global Events',
+					array(),
+					$this->getBaseUri() . '/event#global'
+				),
+				'hook' => new Menu(
+					'Hook Functions',
+					array(),
+					$this->getBaseUri() . '/event#hook'
+				)), $this->getBaseUri() . '/event', '/main/module/event'	
+			),
 			'theme' => new Menu('Theme', array(
-				'set' => new Menu('Set', array(), '/theme/set', '/theme#set'),
-				'design' => new Menu('Design', array(), '/theme/design', '/theme#design')
-			), $this->getBaseUri() . '/theme', '/main/module/theme'),
+				'set' => new Menu(
+					'Set',
+					array(),
+					$this->getBaseUri() . '/theme#set'
+				),
+				'design' => new Menu(
+					'Design',
+					array(),
+					$this->getBaseUri() . '/theme#design'
+				)), $this->getBaseUri() . '/theme', '/main/module/theme'
+			),
 			'todo' => new Menu('To Do List', array(
-				'acl' => new Menu('ACL', array(), $this->getBaseUri() . '/todo#acl'),
-			), $this->getBaseUri() . '/todo', '/main/todo')
+				'acl' => new Menu(
+					'ACL',
+					array(),
+					$this->getBaseUri() . '/todo#acl'
+				)), $this->getBaseUri() . '/todo', '/main/module/todo'
+			)
 		));
 		return array('top' => array('help' => $menu));
 	}
