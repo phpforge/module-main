@@ -1,12 +1,12 @@
 {
 	"name": "phpforge/module-main",
 	"description": "Main Module",
-	"type": "phpforge-plugin",
+	"type": "phpforge-module",
 	"autoload": {
 		"psr-0": {"Main": "src/"}
 	},
 	"require": {
-		"composer/installers": "~1.0"
+
 	},
 	"disable": false
 }
