@@ -12,7 +12,7 @@ class Main extends Module {
 	public function routes() {
 		return array(
 			'get' => array(
-				'/domain/(?<uuid>[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12})' => $this->getBaseUri() . '/organization/domain/uuid',
+				'/domain/(?<uuid>[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12})' => $this->getBaseUri() . 'organization/domain/uuid',
 			),
 		);
 	}
@@ -23,61 +23,61 @@ class Main extends Module {
 				'about' => new Menu(
 					'About',
 					array(),
-					$this->getBaseUri() . '/module#default'
+					$this->getBaseUri() . 'module#default'
 				),
 				'create' => new Menu(
 					'Create',
 					array(),
-					$this->getBaseUri() . '/module#create'
-				)), $this->getBaseUri() . '/module', '/main/module'
+					$this->getBaseUri() . 'module#create'
+				)), $this->getBaseUri() . 'module', '/main/module'
 			),
 			'routing' => new Menu('Routing', array(
 				'default' => new Menu(
 					'Default Routing',
 					array(),
-					$this->getBaseUri() . '/routing#default'
+					$this->getBaseUri() . 'routing#default'
 				),
 				'custom' => new Menu(
 					'Custom Routing',
 					array(),
-					$this->getBaseUri() . '/routing#custom'
+					$this->getBaseUri() . 'routing#custom'
 				),
 				'menu' => new Menu(
 					'Menu Routing',
 					array(),
-					$this->getBaseUri() .'/routing#menu'
-				)), $this->getBaseUri() . '/routing', '/main/module/routing'
+					$this->getBaseUri() .'routing#menu'
+				)), $this->getBaseUri() . 'routing', '/main/module/routing'
 			),
 			'events' => new Menu('Events', array(
 				'global' => new Menu(
 					'Global Events',
 					array(),
-					$this->getBaseUri() . '/event#global'
+					$this->getBaseUri() . 'event#global'
 				),
 				'hook' => new Menu(
 					'Hook Functions',
 					array(),
-					$this->getBaseUri() . '/event#hook'
-				)), $this->getBaseUri() . '/event', '/main/module/event'	
+					$this->getBaseUri() . 'event#hook'
+				)), $this->getBaseUri() . 'event', '/main/module/event'	
 			),
 			'theme' => new Menu('Theme', array(
 				'set' => new Menu(
 					'Set',
 					array(),
-					$this->getBaseUri() . '/theme#set'
+					$this->getBaseUri() . 'theme#set'
 				),
 				'design' => new Menu(
 					'Design',
 					array(),
-					$this->getBaseUri() . '/theme#design'
-				)), $this->getBaseUri() . '/theme', '/main/module/theme'
+					$this->getBaseUri() . 'theme#design'
+				)), $this->getBaseUri() . 'theme', '/main/module/theme'
 			),
 			'todo' => new Menu('To Do List', array(
 				'acl' => new Menu(
 					'ACL',
 					array(),
-					$this->getBaseUri() . '/todo#acl'
-				)), $this->getBaseUri() . '/todo', '/main/module/todo'
+					$this->getBaseUri() . 'todo#acl'
+				)), $this->getBaseUri() . 'todo', '/main/module/todo'
 			)
 		));
 		return array('top' => array('help' => $menu));
