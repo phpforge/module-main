@@ -25,7 +25,6 @@
 	padding-top: 0px;
 }
 
-
 .feature .thumbnail div.links {
 	position: absolute;
 	bottom: 0px;
@@ -60,6 +59,27 @@
 	background-color: #6a8975;
 }
 
+.thumbnail .caption {
+    min-height: 200px;
+}
+
+@media (min-width: 600px) and (max-width: 766px) {
+
+	.col-sm-6 {
+		width: 50%;
+	}
+
+	.col-sm-4 {
+		width: 33.33333333%;
+	}
+}
+
+.caption-btn {
+	position: absolute;
+	right: 28px;
+	bottom: 20px;
+}
+
 </style>
         <!-- Jumbotron Header -->
         <header class="jumbotron hero-spacer">
@@ -72,48 +92,48 @@
         <!-- Page Features -->
         <div class="row text-center">
 
-            <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-sm-6 zhero-feature">
                 <div class="thumbnail tile-colour-1">
                     <div class="caption">
-                        <h3>Download</h3>
-                        <p>Download etc.</p>
-                        <p>
-                            <a href="https://github.com/phpforge/phpforge/releases" class="btn btn-default">View downloads</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail tile-colour-2">
-                    <div class="caption">
-                        <h3>Wiki</h3>
-                        <p>Documentation etc.</p>
-                        <p>
+                        <h3>Modules</h3>
+                        <p>Downloadable modules.</p>
+                        <p class="caption-btn">
                             <a href="https://github.com/phpforge/phpforge/wiki" class="btn btn-default">View</a>
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-sm-6 zhero-feature">
+                <div class="thumbnail tile-colour-2">
+                    <div class="caption">
+                        <h3>Documentation</h3>
+                        <p>List of all documentation related to phpforge..</p>
+                        <p class="caption-btn">
+                            <a href="https://github.com/phpforge/phpforge/wiki" class="btn btn-default">View</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-sm-6 zhero-feature">
                 <div class="thumbnail tile-colour-3">
                     <div class="caption">
                         <h3>Themes</h3>
                         <p>Themes etc.</p>
-                        <p>
+                        <p class="caption-btn">
                             <a href="https://github.com/phpforge/phpforge/wiki/Themes" class="btn btn-default">View Forum</a>
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-sm-6 zhero-feature">
                 <div class="thumbnail tile-colour-4">
                     <div class="caption">
                         <h3>Github</h3>
                         <p>Github etc.</p>
-                        <p>
+                        <p class="caption-btn">
                             <a href="https://github.com/phpforge/" class="btn btn-default">View Github</a>
                         </p>
                     </div>
@@ -127,80 +147,96 @@
                 <h3>Features</h3>
             </div>
         </div>
-        <div class="feature row text-center">
 
-            <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="feature row text-center">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
 					<div style="position: absolute; width: 100%; height: 50px; background-color: #DDD;">-</div>
                     <div class="caption">
                         <h3>Modular</h3>
                         <p>Create re-usable MVC modules.</p>
-						<div class="links">
-							<p>
-								<a href="https://github.com/phpforge/phpforge/wiki/Modules" class="btn btn-default">Documentation</a>
-							</p>
-						</div>
+						<p class="caption-btn">
+							<a href="https://github.com/phpforge/phpforge/wiki/Modules" class="btn btn-default">Documentation</a>
+						</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
 					<div style="position: absolute; width: 100%; height: 50px; background-color: #DDD;">-</div>
                     <div class="caption">
                         <h3>Custom Events</h3>
                         <p>Modules have the flexibility to interact with each other using hook functions.</p>
-						<div class="links">
-							<p>
-								<a href="https://github.com/phpforge/phpforge/wiki/Events" class="btn btn-default">Documentation</a>
-							</p>
-						</div>
+						<p class="caption-btn">
+							<a href="https://github.com/phpforge/phpforge/wiki/Events" class="btn btn-default">Documentation</a>
+						</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
 					<div style="position: absolute; width: 100%; height: 50px; background-color: #DDD;">-</div>
                     <div class="caption">
                         <h3>Automatic Routing</h3>
                         <p>Routing has been made easy by creating a routemap based on module hierarchy and methods.</p>
-						<div class="links">
-							<p>
-								<a href="https://github.com/phpforge/phpforge/wiki/Routing" class="btn btn-default">Documentation</a>
-							</p>
-						</div>
+						<p class="caption-btn">
+							<a href="https://github.com/phpforge/phpforge/wiki/Routing" class="btn btn-default">Documentation</a>
+						</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+					<div style="position: absolute; width: 100%; height: 50px; background-color: #DDD;">-</div>
+                    <div class="caption">
+                        <h3>Menu</h3>
+                        <p></p>
+						<p class="caption-btn">
+							<a href="#" class="btn btn-default">Documentation</a>
+						</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+					<div style="position: absolute; width: 100%; height: 50px; background-color: #DDD;">-</div>
+                    <div class="caption">
+                        <h3>Access Control</h3>
+                        <p></p>
+						<p class="caption-btn">
+							<a href="#" class="btn btn-default">Documentation</a>
+						</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
 					<div style="position: absolute; width: 100%; height: 50px; background-color: #DDD;">-</div>
                     <div class="caption">
                         <h3>Themable</h3>
                         <p>Ability to apply custom themes. Modules have the ability to switch out.</p>
-						<div class="links">
-							<p>
-								<a href="https://github.com/phpforge/phpforge/wiki/Themes" class="btn btn-default">Documentation</a>
-							</p>
-						</div>
+						<p class="caption-btn">
+							<a href="https://github.com/phpforge/phpforge/wiki/Themes" class="btn btn-default">Documentation</a>
+						</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
 					<div style="position: absolute; width: 100%; height: 50px; background-color: #DDD;">-</div>
                     <div class="caption">
                         <h3>Not Bloatware</h3>
                         <p>Freely chose your own dependencies such as Doctrine2 or ZendDB.</p>
 						<p>We do not package libraries that you may not wish to use by default.</p>
-						<div class="links">
-							<p>
-								<a href="#" class="btn btn-default">Documentation</a>
-							</p>
-						</div>
+						<p class="caption-btn">
+							<a href="#" class="btn btn-default">Documentation</a>
+						</p>
                     </div>
                 </div>
             </div>

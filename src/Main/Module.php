@@ -2,7 +2,7 @@
 
 namespace Main;
 
-class Module extends \Forge\Application\Module {
+class Module extends \Base {
 	public function eventGet() {
 		
 	}
@@ -16,6 +16,10 @@ class Module extends \Forge\Application\Module {
 	}
 
 	public function themeGet() {
+		
+	}
+
+	public function aclGet() {
 		
 	}
 

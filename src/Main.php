@@ -1,89 +1,84 @@
 <?php
 
 use Forge\Application\Menu;
-use Forge\Application\Module;
 
-class Main extends Module {
+class Main extends \Base {
 
 	public function Bootstrap() {
 		$this->setTheme('default');
 	}
 
+	public function acl() {
+		return array(
+			'loginGet' => array('anonymous'),
+			'logoutGet' => array('user')
+		);
+	}
+
 	public function routes() {
 		return array(
 			'get' => array(
-				'/domain/(?<uuid>[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12})' => $this->getBaseUri() . '/organization/domain/uuid',
+				'/domain/(?<uuid>[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12})' => '/organization/domain/uuid',
 			),
+			'post' => array(
+				'/login' => '/main/login'
+			)
 		);
 	}
 
 	public function menus() {
-		$menu = new Menu('Help', array(
-			'module' => new Menu('Module', array(
-				'about' => new Menu(
-					'About',
-					array(),
-					$this->getBaseUri() . '/module#default'
-				),
-				'create' => new Menu(
-					'Create',
-					array(),
-					$this->getBaseUri() . '/module#create'
-				)), $this->getBaseUri() . '/module', '/main/module'
-			),
-			'routing' => new Menu('Routing', array(
-				'default' => new Menu(
-					'Default Routing',
-					array(),
-					$this->getBaseUri() . '/routing#default'
-				),
-				'custom' => new Menu(
-					'Custom Routing',
-					array(),
-					$this->getBaseUri() . '/routing#custom'
-				),
-				'menu' => new Menu(
-					'Menu Routing',
-					array(),
-					$this->getBaseUri() .'/routing#menu'
-				)), $this->getBaseUri() . '/routing', '/main/module/routing'
-			),
-			'events' => new Menu('Events', array(
-				'global' => new Menu(
-					'Global Events',
-					array(),
-					$this->getBaseUri() . '/event#global'
-				),
-				'hook' => new Menu(
-					'Hook Functions',
-					array(),
-					$this->getBaseUri() . '/event#hook'
-				)), $this->getBaseUri() . '/event', '/main/module/event'	
-			),
-			'theme' => new Menu('Theme', array(
-				'set' => new Menu(
-					'Set',
-					array(),
-					$this->getBaseUri() . '/theme#set'
-				),
-				'design' => new Menu(
-					'Design',
-					array(),
-					$this->getBaseUri() . '/theme#design'
-				)), $this->getBaseUri() . '/theme', '/main/module/theme'
-			),
-			'todo' => new Menu('To Do List', array(
-				'acl' => new Menu(
-					'ACL',
-					array(),
-					$this->getBaseUri() . '/todo#acl'
-				)), $this->getBaseUri() . '/todo', '/main/module/todo'
-			)
-		));
-		return array('top' => array('help' => $menu));
+		$navbar = array('about' => new Menu('About', array(
+			'module' => new Menu('Module', array(), $this->getBaseUri() . '/module', '/main/module'),
+			'routing' => new Menu('Routing', array(), '/routing', '/main/module/routing'),
+			'events' => new Menu('Events', array(), $this->getBaseUri() . '/event', '/main/module/event'),
+			'theme' => new Menu('Theme', array(), $this->getBaseUri() . '/theme', '/main/module/theme'),
+			'todo' => new Menu('To Do List', array(), $this->getBaseUri() . '/todo', '/main/module/todo')
+		)));
+
+		$navbarRight = array(
+			'account' => new Menu('Account', array(
+				'logout' => new Menu('Logout', array(), $this->getBaseUri() . '/logout', '/main/logout'),
+			), '#'),
+			'login' => new Menu('<span class="glyphicon glyphicon-log-in"></span> Login', array(), $this->getBaseUri() . '/login', '/main/login')
+		);
+
+		return array(
+			'navbar' => $navbar,
+			'navbarRight' => $navbarRight
+		);
 	}
 
 	public function mainGet() {
 
+	}
+
+	public function loginGet() {
+
+	}
+
+	public function loginPost() {
+		$username = $this->getRequest()->getParam('username');
+		$password = $this->getRequest()->getParam('password');
+		if ($username && $password) {
+			if ($username === 'admin' && $password === 'admin') {
+				$this->setSession('account', $username);
+				$this->username = $username;
+				$this->assignRoles();
+			} else {
+				$this->setTemplate(dirname(__FILE__) . '/Main/Template/unauthorized.get');
+			}
+		} else {
+			$this->setTemplate(dirname(__FILE__) . '/Main/Template/unauthorized.get');
+		}
+	}
+
+
+	public function logoutGet() {
+		$this->setRoles(array('anonymous'));
+		$this->setSession('account', '');
+	}
+
+	public function unauthorizedGet() {
+		
 	}
 }
