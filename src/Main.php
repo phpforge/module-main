@@ -28,11 +28,7 @@ class Main extends \Base {
 
 	public function menus() {
 		$navbar = array('about' => new Menu('About', array(
-			'module' => new Menu('Module', array(), $this->getBaseUri() . '/module', '/main/module'),
-			'routing' => new Menu('Routing', array(), '/routing', '/main/module/routing'),
-			'events' => new Menu('Events', array(), $this->getBaseUri() . '/event', '/main/module/event'),
-			'theme' => new Menu('Theme', array(), $this->getBaseUri() . '/theme', '/main/module/theme'),
-			'todo' => new Menu('To Do List', array(), $this->getBaseUri() . '/todo', '/main/module/todo')
+			'documentation' => new Menu('Documentation', array(), 'https://github.com/phpforge/phpforge/wiki', '_new')
 		)));
 
 		$navbarRight = array(
