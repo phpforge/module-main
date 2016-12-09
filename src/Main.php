@@ -28,7 +28,7 @@ class Main extends \Base {
 
 	public function menus() {
 		$navbar = array('about' => new Menu('About', array(
-			'documentation' => new Menu('Documentation', array(), 'https://github.com/phpforge/phpforge/wiki', '_new')
+			'documentation' => new Menu('Documentation', array(), 'https://github.com/phpforge/phpforge/wiki', '_blank')
 		)));
 
 		$navbarRight = array(
